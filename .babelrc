@@ -1,0 +1,7 @@
+{
+  "presets": ["@babel/env", "next/babel"],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    "inline-react-svg"
+  ]
+}
