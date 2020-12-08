@@ -120,6 +120,7 @@ export default class IndexPage extends React.Component {
             position: relative;
             text-transform: uppercase;
             max-width: 520px;
+            margin-top: 82px;
             display: inline-block;
           }
           mark {
