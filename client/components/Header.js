@@ -2,7 +2,9 @@ import React from 'react'
 import Link from "next/link"
 import { Center } from "./Layout"
 import Nav from "./Nav"
+import Modal from "./Modal"
 import Logotype from "../icons/ideas-chain-logo.svg"
+import IdeaComposer from "./IdeaComposer"
 
 import { getLoggedInUserId, getUserInfo } from "../web3/users"
 import getWeb3 from '../web3/get-web3'
@@ -11,7 +13,16 @@ export default class Header extends React.Component {
 
   state = {
     loggedIn: false,
-    userInfo: {}
+    userInfo: {},
+    showComposeModal: false
+  }
+
+  toggleComposeModal = () => {
+    const { showComposeModal } = this.state
+
+    this.setState({
+      showComposeModal: !showComposeModal,
+    })
   }
 
   async componentDidMount() {
@@ -33,7 +44,7 @@ export default class Header extends React.Component {
   }
 
   render() {
-    const { loggedIn, userInfo } = this.state
+    const { loggedIn, userInfo, showComposeModal } = this.state
 
     return (
       <header>
@@ -47,10 +58,20 @@ export default class Header extends React.Component {
             {loggedIn && (
               <Nav
                 userInfo={userInfo}
+                toggleComposeModal={this.toggleComposeModal}
               />
             )}
           </nav>
         </Center>
+
+        {showComposeModal && (
+          <Modal
+            onClose={this.toggleComposeModal}
+          >
+            Create an idea!
+            <IdeaComposer onClose={this.toggleComposeModal} />
+          </Modal>
+        )}
 
         <style jsx>{`
           header {

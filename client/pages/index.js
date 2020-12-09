@@ -57,7 +57,7 @@ export default class IndexPage extends React.Component {
   }
 
   createIdea = async () => {
-    const tx = await createIdea(this.web3, 1, "my super cool idea")
+    const tx = await createIdea(this.web3, "my super cool idea")
     console.log(tx)
   }
 

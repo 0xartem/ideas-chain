@@ -13,11 +13,11 @@ export const getIdea = async (web3, ideaId) => {
   }
 }
 
-export const createIdea = async (web3, userId, text) => {
+export const createIdea = async (web3, text) => {
   const controller = await getInstance(web3.currentProvider, IdeaController)
   try {
     const addresses = await web3.eth.getAccounts()
-    const result = await controller.createIdea(userId, text, { from: addresses[0] })
+    const result = await controller.createIdea(text, { from: addresses[0] })
     return result
   } catch (err) {
     console.error("Err: ", err)
