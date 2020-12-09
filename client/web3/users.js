@@ -1,8 +1,10 @@
+import getWeb3 from '../web3/get-web3'
 import { getInstance } from './contract-instance'
 import UserStorage from './artifacts/UserStorage.json'
 import UserController from "./artifacts/UserController.json"
 
-export const getUserInfo = async (web3, userId) => {
+export const getUserInfo = async (userId) => {
+  const web3 = await getWeb3()
   const storage = await getInstance(web3.currentProvider, UserStorage)
   const profile = await storage.profiles.call(userId)
 
@@ -27,7 +29,8 @@ export const getUserInfo = async (web3, userId) => {
   }
 }
 
-export const createUser = async (web3, username, firstName, lastName, bio, gravatarEmail) => {
+export const createUser = async (username, firstName, lastName, bio, gravatarEmail) => {
+  const web3 = await getWeb3()
   const controller = await getInstance(web3.currentProvider, UserController)
 
   try {
@@ -50,8 +53,9 @@ export const createUser = async (web3, username, firstName, lastName, bio, grava
   }
 }
 
-export const getLoggedInUserId = async (web3) => {
+export const getLoggedInUserId = async () => {
   try {
+    const web3 = await getWeb3()
     const addresses = await web3.eth.getAccounts()
 
     if (!addresses) return
@@ -63,4 +67,12 @@ export const getLoggedInUserId = async (web3) => {
   } catch (err) {
     console.error("Err:", err)
   }
+}
+
+export const getUserIdFromUsername = async (username) => {
+  const web3 = await getWeb3()
+  const storage = await getInstance(web3.currentProvider, UserStorage)
+  const userId = await storage.usernames.call(web3.utils.fromAscii(username))
+
+  return userId
 }

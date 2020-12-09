@@ -2,7 +2,6 @@ import React from 'react'
 import Button from "./Button"
 
 import { createUser } from "../web3/users"
-import getWeb3 from '../web3/get-web3'
 
 const Input = ({ title, value, onChange }) => (
   <div>
@@ -75,10 +74,7 @@ export default class RegistrationForm extends React.Component {
 
     try {
       // Open the MetaMask modal:
-      const web3 = await getWeb3()
-      const addrs = await web3.eth.getAccounts()
-      console.log(addrs)
-      await createUser(web3, username, firstName, lastName, bio, gravatarEmail)
+      await createUser(username, firstName, lastName, bio, gravatarEmail)
 
       alert("Your user has been created!")
     } catch (err) {

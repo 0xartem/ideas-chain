@@ -42,22 +42,22 @@ export default class IndexPage extends React.Component {
   };
 
   logUser = async () => {
-    const userInfo = await getUserInfo(this.web3, 1)
+    const userInfo = await getUserInfo(1)
     console.log(userInfo)
   }
 
   createUser = async () => {
-    const tx = await createUser(this.web3, "artem")
+    const tx = await createUser("artem")
     console.log(tx)
   }
 
   logIdea = async () => {
-    const ideaInfo = await getIdea(this.web3, 1)
+    const ideaInfo = await getIdea(1)
     console.log(ideaInfo)
   }
 
   createIdea = async () => {
-    const tx = await createIdea(this.web3, "my super cool idea")
+    const tx = await createIdea("my super cool idea")
     console.log(tx)
   }
 

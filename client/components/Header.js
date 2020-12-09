@@ -7,7 +7,6 @@ import Logotype from "../icons/ideas-chain-logo.svg"
 import IdeaComposer from "./IdeaComposer"
 
 import { getLoggedInUserId, getUserInfo } from "../web3/users"
-import getWeb3 from '../web3/get-web3'
 
 export default class Header extends React.Component {
 
@@ -28,9 +27,8 @@ export default class Header extends React.Component {
   async componentDidMount() {
 
     try {
-      const web3 = await getWeb3()
-      const userId = await getLoggedInUserId(web3)
-      const userInfo = await getUserInfo(web3, userId)
+      const userId = await getLoggedInUserId()
+      const userInfo = await getUserInfo(userId)
       console.log("Logged in as", userInfo)
 
       this.setState({

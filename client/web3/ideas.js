@@ -1,8 +1,10 @@
+import getWeb3 from '../web3/get-web3'
 import { getInstance } from './contract-instance'
 import IdeaStorage from './artifacts/IdeaStorage.json'
 import IdeaController from './artifacts/IdeaController.json'
 
-export const getIdea = async (web3, ideaId) => {
+export const getIdea = async (ideaId) => {
+  const web3 = await getWeb3()
   const storage = await getInstance(web3.currentProvider, IdeaStorage)
   const idea = await storage.ideas.call(ideaId)
   return {
@@ -13,7 +15,8 @@ export const getIdea = async (web3, ideaId) => {
   }
 }
 
-export const createIdea = async (web3, text) => {
+export const createIdea = async (text) => {
+  const web3 = await getWeb3()
   const controller = await getInstance(web3.currentProvider, IdeaController)
   try {
     const addresses = await web3.eth.getAccounts()
@@ -22,4 +25,12 @@ export const createIdea = async (web3, text) => {
   } catch (err) {
     console.error("Err: ", err)
   }
+}
+
+export const getIdeaIdsFromUser = async (userId) => {
+  const web3 = await getWeb3()
+  const storage = await getInstance(web3.currentProvider, IdeaStorage)
+  const ideaIds = await storage.getIdeaIdsFromUser.call(userId)
+
+  return ideaIds.map(ideaId => parseInt(ideaId))
 }

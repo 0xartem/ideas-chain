@@ -1,7 +1,6 @@
 import React from 'react'
 import { createIdea } from '../web3/ideas'
 import Button from './Button'
-import getWeb3 from '../web3/get-web3'
 
 export default class ComposeModal extends React.Component {
   state = {
@@ -18,8 +17,7 @@ export default class ComposeModal extends React.Component {
     const { text } = this.state
     const { onClose } = this.props
 
-    const web3 = await getWeb3();
-    await createIdea(web3, text)
+    await createIdea(text)
 
     alert("Your idea was posted!")
 
