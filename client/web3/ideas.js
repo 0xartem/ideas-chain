@@ -43,7 +43,6 @@ export const loadUsersFromIdeas = async (ideas) => {
   })
 
   const users = await Promise.all(userPromises)
-  console.log('users: ', users)
 
   return ideas.map((idea, index) => {
     return {

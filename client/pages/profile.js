@@ -3,6 +3,7 @@ import { withRouter } from 'next/router'
 
 import { Page, Center } from '../components/Layout'
 import Avatar from '../components/Avatar'
+import IdeaList from '../components/IdeaList'
 
 import { getUserIdFromUsername, getUserInfo, } from '../web3/users'
 import { getIdea, getIdeaIdsFromUser, loadUsersFromIdeas } from '../web3/ideas'
@@ -12,6 +13,7 @@ const AVATAR_SIZE = 113
 class ProfilePage extends React.Component {
   state = {
     profile: {},
+    ideas: []
   }
 
   async componentDidMount() {
@@ -39,16 +41,16 @@ class ProfilePage extends React.Component {
       return getIdea(ideaId)
     })
 
-    const ideas = await Promise.all(ideaPromises)
-    console.log('ideas: ', ideas)
-
-    const ideasWithUser = await loadUsersFromIdeas(ideas)
-
+    const rawIdeas = await Promise.all(ideaPromises)
+    const ideasWithUser = await loadUsersFromIdeas(rawIdeas)
     console.log('ideasWithUser: ', ideasWithUser)
+    this.setState({
+      ideas: ideasWithUser
+    })
   }
 
   render() {
-    const { profile } = this.state
+    const { profile, ideas } = this.state
     const { username, firstName, lastName, bio, gravatarEmail } = profile
 
     return (
@@ -57,22 +59,28 @@ class ProfilePage extends React.Component {
           maxWidth: 560, 
         }}>
           {username && (
-            <div className="profile-top">
-              <div className="info">
-                <h1>
-                  {firstName} {lastName}
-                </h1>
-                <p className="username">
-                  @{username}
-                </p>
-                <p className="desc">
-                  {bio}
-                </p>
+            <div>
+              <div className="profile-top">
+                <div className="info">
+                  <h1>
+                    {firstName} {lastName}
+                  </h1>
+                  <p className="username">
+                    @{username}
+                  </p>
+                  <p className="desc">
+                    {bio}
+                  </p>
+                </div>
+                <Avatar
+                  size={AVATAR_SIZE}
+                  email={gravatarEmail}
+                />
               </div>
-              <Avatar 
-                size={AVATAR_SIZE} 
-                email={gravatarEmail}
-              />
+              <h2>
+                {firstName}'s ideas ({ideas.length})
+              </h2>
+              <IdeaList ideas={ideas} />
             </div>
           )}
 

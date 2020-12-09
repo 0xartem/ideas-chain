@@ -59,9 +59,9 @@ contract('ideas', async () => {
     const userId = 1
     const ids = await storage.getIdeaIdsFromUser.call(userId)
 
-    const expectedTweetId = 1
+    const expectedIdeaId = 1
 
     assert.isOk(Array.isArray(ids))
-    assert.equal(ids[0], expectedTweetId)
+    assert.equal(ids[0], expectedIdeaId)
   })
 })
