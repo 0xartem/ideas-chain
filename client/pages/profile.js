@@ -6,7 +6,7 @@ import Avatar from '../components/Avatar'
 import IdeaList from '../components/IdeaList'
 
 import { getUserIdFromUsername, getUserInfo, } from '../web3/users'
-import { getIdea, getIdeaIdsFromUser, loadUsersFromIdeas } from '../web3/ideas'
+import { getIdea, getIdeaIdsFromUser, loadIdeasWithUsers } from '../web3/ideas'
 
 const AVATAR_SIZE = 113
 
@@ -42,10 +42,10 @@ class ProfilePage extends React.Component {
     })
 
     const rawIdeas = await Promise.all(ideaPromises)
-    const ideasWithUser = await loadUsersFromIdeas(rawIdeas)
-    console.log('ideasWithUser: ', ideasWithUser)
+    const ideasWithUsers = await loadIdeasWithUsers(rawIdeas)
+    console.log('ideasWithUsers: ', ideasWithUsers)
     this.setState({
-      ideas: ideasWithUser
+      ideas: ideasWithUsers
     })
   }
 

@@ -14,16 +14,22 @@ contract IdeaStorage is BaseStorage {
 
   mapping (uint => Idea) public ideas;
   mapping (uint => uint[]) public userIdeaIds;
+  uint[] public ideaIds;
   uint latestIdeaId = 0;
 
   function createIdea(uint _userId, string memory _text) public onlyController returns (uint) {
     latestIdeaId++;
     ideas[latestIdeaId] = Idea(latestIdeaId, _text, _userId, block.timestamp);
     userIdeaIds[_userId].push(latestIdeaId);
+    ideaIds.push(latestIdeaId);
     return latestIdeaId;
   }
 
   function getIdeaIdsFromUser(uint _userId) view public returns(uint[] memory) {
     return userIdeaIds[_userId];
+  }
+
+  function getNumIdeas() view public returns(uint _numIdeas) {
+    return ideaIds.length;
   }
 }

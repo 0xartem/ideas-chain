@@ -36,7 +36,7 @@ export const getIdeaIdsFromUser = async (userId) => {
   return ideaIds.map(ideaId => parseInt(ideaId))
 }
 
-export const loadUsersFromIdeas = async (ideas) => {
+export const loadIdeasWithUsers = async (ideas) => {
   const userPromises = ideas.map(idea => {
     const { userId } = idea
     return getUserInfo(userId)
@@ -50,4 +50,27 @@ export const loadUsersFromIdeas = async (ideas) => {
       ...idea
     }
   })
+}
+
+export const getLatestIdeaIds = async (amount = 5, page = 1) => {
+  const web3 = await getWeb3()
+  const storage = await getInstance(web3.currentProvider, IdeaStorage)
+
+  const numIdeas = await storage.getNumIdeas.call()
+  const ideaIdPromises = []
+
+  const lastIndex = numIdeas - 1 // Latest
+  const pageIndex = page - 1
+  const startIndex = lastIndex - (amount * pageIndex)
+  const maxIndex = startIndex - amount
+
+  for (let i = startIndex; i > maxIndex; i--) {
+    if (i < 0) break
+
+    ideaIdPromises.push(storage.ideaIds(i))
+  }
+
+  const ideaIds = await Promise.all(ideaIdPromises)
+
+  return ideaIds
 }

@@ -64,4 +64,12 @@ contract('ideas', async () => {
     assert.isOk(Array.isArray(ids))
     assert.equal(ids[0], expectedIdeaId)
   })
+
+  it("can get idea ID based on index", async () => {
+    const storage = await IdeaStorage.deployed()
+
+    const ideaId = await storage.ideaIds.call(0)
+
+    assert.equal(ideaId, 1)
+  })
 })

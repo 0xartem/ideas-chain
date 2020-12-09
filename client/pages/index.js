@@ -1,4 +1,5 @@
 import React from 'react'
+import Router from 'next/router'
 import { Page, Center } from "../components/Layout"
 import Button from "../components/Button"
 import MetaMaskIcon from "../icons/metamask.svg"
@@ -6,7 +7,7 @@ import Modal from "../components/Modal"
 import RegistrationForm from "../components/RegistrationForm"
 
 import getWeb3 from '../web3/get-web3'
-import { getUserInfo, createUser } from "../web3/users"
+import { getUserInfo, createUser, getLoggedInUserId } from "../web3/users"
 import { getIdea, createIdea } from '../web3/ideas'
 
 export default class IndexPage extends React.Component {
@@ -27,11 +28,14 @@ export default class IndexPage extends React.Component {
     try {
       // Get network provider and web3 instance.
       this.web3 = await getWeb3();
-      console.log(this.web3.currentProvider)
-
       // Use web3 to get the user's accounts.
       const accounts = await this.web3.eth.getAccounts();
       console.log(accounts);
+
+      const userId = await getLoggedInUserId()
+      if (userId) {
+        Router.replace('/home')
+      }
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
