@@ -1,5 +1,6 @@
 const IdeaStorage = artifacts.require('IdeaStorage');
 const IdeaController = artifacts.require('IdeaController');
+const UserController = artifacts.require('UserController');
 
 const assertVMException = error => {
   const hasException = error.toString().search("VM Exception");
@@ -7,6 +8,18 @@ const assertVMException = error => {
 }
 
 contract('ideas', async () => {
+
+  before(async () => {
+    const userCtrl = await UserController.deployed();
+    
+    await userCtrl.createUser(
+      web3.utils.fromAscii('artem'),
+      web3.utils.fromAscii('Artem'),
+      web3.utils.fromAscii('B.'),
+      "I like new ideas",
+      "example@example.com"
+    );
+  });
 
   it("can't create idea without controller", async () => {
     const storage = await IdeaStorage.deployed()
@@ -22,7 +35,7 @@ contract('ideas', async () => {
   it("can create idea with controller", async () => {
     const controller = await IdeaController.deployed();
 
-    const tx = await controller.createIdea(1, "My super cool idea");
+    const tx = await controller.createIdea("My super cool idea");
 
     assert.isOk(tx);
   });
@@ -38,5 +51,17 @@ contract('ideas', async () => {
     assert.equal(text, "My super cool idea");
     assert.equal(parseInt(userId), 1);
     console.log(parseInt(postedAt));
+  })
+
+  it("can get all idea IDs from user", async () => {
+    const storage = await IdeaStorage.deployed()
+
+    const userId = 1
+    const ids = await storage.getIdeaIdsFromUser.call(userId)
+
+    const expectedTweetId = 1
+
+    assert.isOk(Array.isArray(ids))
+    assert.equal(ids[0], expectedTweetId)
   })
 })
