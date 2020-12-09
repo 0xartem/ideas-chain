@@ -55,18 +55,18 @@
     "absolutePath": "/home/daelankane/code/ed/ether/ideas-chain/contracts/helpers/BaseController.sol",
     "exportedSymbols": {
       "BaseController": [
-        109
+        103
       ],
       "Owned": [
-        186
+        180
       ]
     },
-    "id": 110,
+    "id": 104,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 91,
+        "id": 85,
         "literals": [
           "solidity",
           ">=",
@@ -82,10 +82,10 @@
       {
         "absolutePath": "/home/daelankane/code/ed/ether/ideas-chain/contracts/helpers/Owned.sol",
         "file": "./Owned.sol",
-        "id": 92,
+        "id": 86,
         "nodeType": "ImportDirective",
-        "scope": 110,
-        "sourceUnit": 187,
+        "scope": 104,
+        "sourceUnit": 181,
         "src": "69:21:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -95,41 +95,41 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 93,
+              "id": 87,
               "name": "Owned",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 186,
+              "referencedDeclaration": 180,
               "src": "119:5:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Owned_$186",
+                "typeIdentifier": "t_contract$_Owned_$180",
                 "typeString": "contract Owned"
               }
             },
-            "id": 94,
+            "id": 88,
             "nodeType": "InheritanceSpecifier",
             "src": "119:5:2"
           }
         ],
         "contractDependencies": [
-          186
+          180
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 109,
+        "id": 103,
         "linearizedBaseContracts": [
-          109,
-          186
+          103,
+          180
         ],
         "name": "BaseController",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 96,
+            "id": 90,
             "mutability": "mutable",
             "name": "managerAddress",
             "nodeType": "VariableDeclaration",
-            "scope": 109,
+            "scope": 103,
             "src": "130:22:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -138,7 +138,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 95,
+              "id": 89,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "130:7:2",
@@ -152,23 +152,23 @@
           },
           {
             "body": {
-              "id": 107,
+              "id": 101,
               "nodeType": "Block",
               "src": "226:43:2",
               "statements": [
                 {
                   "expression": {
-                    "id": 105,
+                    "id": 99,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 103,
+                      "id": 97,
                       "name": "managerAddress",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 96,
+                      "referencedDeclaration": 90,
                       "src": "232:14:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -178,11 +178,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 104,
+                      "id": 98,
                       "name": "_managerAddress",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 98,
+                      "referencedDeclaration": 92,
                       "src": "249:15:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -195,25 +195,25 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 106,
+                  "id": 100,
                   "nodeType": "ExpressionStatement",
                   "src": "232:32:2"
                 }
               ]
             },
             "functionSelector": "41431908",
-            "id": 108,
+            "id": 102,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 101,
+                "id": 95,
                 "modifierName": {
-                  "id": 100,
+                  "id": 94,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 164,
+                  "referencedDeclaration": 158,
                   "src": "216:9:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -227,16 +227,16 @@
             "name": "setManagerAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 99,
+              "id": 93,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 98,
+                  "id": 92,
                   "mutability": "mutable",
                   "name": "_managerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
+                  "scope": 102,
                   "src": "184:23:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -245,7 +245,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 97,
+                    "id": 91,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "184:7:2",
@@ -261,19 +261,19 @@
               "src": "183:25:2"
             },
             "returnParameters": {
-              "id": 102,
+              "id": 96,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "226:0:2"
             },
-            "scope": 109,
+            "scope": 103,
             "src": "157:112:2",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 110,
+        "scope": 104,
         "src": "92:179:2"
       }
     ],
@@ -283,18 +283,18 @@
     "absolutePath": "/home/daelankane/code/ed/ether/ideas-chain/contracts/helpers/BaseController.sol",
     "exportedSymbols": {
       "BaseController": [
-        109
+        103
       ],
       "Owned": [
-        186
+        180
       ]
     },
-    "id": 110,
+    "id": 104,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 91,
+        "id": 85,
         "literals": [
           "solidity",
           ">=",
@@ -310,10 +310,10 @@
       {
         "absolutePath": "/home/daelankane/code/ed/ether/ideas-chain/contracts/helpers/Owned.sol",
         "file": "./Owned.sol",
-        "id": 92,
+        "id": 86,
         "nodeType": "ImportDirective",
-        "scope": 110,
-        "sourceUnit": 187,
+        "scope": 104,
+        "sourceUnit": 181,
         "src": "69:21:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -323,41 +323,41 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 93,
+              "id": 87,
               "name": "Owned",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 186,
+              "referencedDeclaration": 180,
               "src": "119:5:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Owned_$186",
+                "typeIdentifier": "t_contract$_Owned_$180",
                 "typeString": "contract Owned"
               }
             },
-            "id": 94,
+            "id": 88,
             "nodeType": "InheritanceSpecifier",
             "src": "119:5:2"
           }
         ],
         "contractDependencies": [
-          186
+          180
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 109,
+        "id": 103,
         "linearizedBaseContracts": [
-          109,
-          186
+          103,
+          180
         ],
         "name": "BaseController",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 96,
+            "id": 90,
             "mutability": "mutable",
             "name": "managerAddress",
             "nodeType": "VariableDeclaration",
-            "scope": 109,
+            "scope": 103,
             "src": "130:22:2",
             "stateVariable": true,
             "storageLocation": "default",
@@ -366,7 +366,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 95,
+              "id": 89,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "130:7:2",
@@ -380,23 +380,23 @@
           },
           {
             "body": {
-              "id": 107,
+              "id": 101,
               "nodeType": "Block",
               "src": "226:43:2",
               "statements": [
                 {
                   "expression": {
-                    "id": 105,
+                    "id": 99,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 103,
+                      "id": 97,
                       "name": "managerAddress",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 96,
+                      "referencedDeclaration": 90,
                       "src": "232:14:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -406,11 +406,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 104,
+                      "id": 98,
                       "name": "_managerAddress",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 98,
+                      "referencedDeclaration": 92,
                       "src": "249:15:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -423,25 +423,25 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 106,
+                  "id": 100,
                   "nodeType": "ExpressionStatement",
                   "src": "232:32:2"
                 }
               ]
             },
             "functionSelector": "41431908",
-            "id": 108,
+            "id": 102,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 101,
+                "id": 95,
                 "modifierName": {
-                  "id": 100,
+                  "id": 94,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 164,
+                  "referencedDeclaration": 158,
                   "src": "216:9:2",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
@@ -455,16 +455,16 @@
             "name": "setManagerAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 99,
+              "id": 93,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 98,
+                  "id": 92,
                   "mutability": "mutable",
                   "name": "_managerAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 108,
+                  "scope": 102,
                   "src": "184:23:2",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -473,7 +473,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 97,
+                    "id": 91,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "184:7:2",
@@ -489,19 +489,19 @@
               "src": "183:25:2"
             },
             "returnParameters": {
-              "id": 102,
+              "id": 96,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "226:0:2"
             },
-            "scope": 109,
+            "scope": 103,
             "src": "157:112:2",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 110,
+        "scope": 104,
         "src": "92:179:2"
       }
     ],
@@ -513,7 +513,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.2",
-  "updatedAt": "2020-11-30T16:21:46.389Z",
+  "updatedAt": "2020-12-09T07:27:40.582Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
