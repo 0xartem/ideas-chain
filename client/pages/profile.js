@@ -5,7 +5,7 @@ import { Page, Center } from '../components/Layout'
 import Avatar from '../components/Avatar'
 
 import { getUserIdFromUsername, getUserInfo, } from '../web3/users'
-import { getIdea, getIdeaIdsFromUser } from '../web3/ideas'
+import { getIdea, getIdeaIdsFromUser, loadUsersFromIdeas } from '../web3/ideas'
 
 const AVATAR_SIZE = 113
 
@@ -40,8 +40,11 @@ class ProfilePage extends React.Component {
     })
 
     const ideas = await Promise.all(ideaPromises)
+    console.log('ideas: ', ideas)
 
-    console.log(ideas)
+    const ideasWithUser = await loadUsersFromIdeas(ideas)
+
+    console.log('ideasWithUser: ', ideasWithUser)
   }
 
   render() {
