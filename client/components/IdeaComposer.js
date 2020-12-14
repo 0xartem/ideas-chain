@@ -1,4 +1,5 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 import { createIdea } from '../web3/ideas'
 import Button from './Button'
 
@@ -17,11 +18,27 @@ export default class ComposeModal extends React.Component {
     const { text } = this.state
     const { onClose } = this.props
 
-    await createIdea(text)
+    let toastId = null
 
-    alert("Your idea was posted!")
+    try {
+      toastId = toast.info("Your idea is being posted. This will take a couple of seconds...")
 
-    onClose()
+      await createIdea(text)
+
+      toast.update(toastId, { 
+        render: "Your idea has been posted!",
+        type: toast.TYPE.SUCCESS,
+        autoClose: 4000,
+      })
+
+      onClose()
+    } catch (err) {
+      toast.update(toastId, { 
+        render: "Sorry, we couldn't post your idea!",
+        type: toast.TYPE.ERROR,
+        autoClose: 4000,
+      })
+    }
   }
 
   render() {
