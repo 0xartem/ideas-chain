@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "npm run artifacts && next client",
     "dev:clean": "truffle migrate --reset && npm run artifacts && next client",
+    "ropsten:start": "geth --ropsten --rpc --rpcapi db,eth,net,web3,personal --rpcport 8546",
+    "ropsten:attach": "geth attach http://127.0.0.1:8546",
     "ropsten": "truffle migrate --network ropsten && npm run artifacts && next client",
     "artifacts": "cp -r ./build/contracts/* ./client/web3/artifacts",
     "fund-metamask": "truffle exec ./fund-metamask.js",
