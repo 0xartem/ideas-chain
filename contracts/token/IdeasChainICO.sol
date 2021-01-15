@@ -20,6 +20,7 @@ contract IdeasChainICO {
   }
 
   function _getTokenAmount(uint256 _weiAmount) internal view returns (uint256) {
-    return _weiAmount.div(10 ** 18).mul(RATE);
+    return (_weiAmount / (10 ** 18)) * RATE;
+    // return _weiAmount.div(10 ** 18).mul(RATE); TODO: error on sending ether to the ICO contract
   }
 }
