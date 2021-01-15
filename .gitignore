@@ -1,5 +1,4 @@
 node_modules
 client/.next
 client/web3/artifacts/*
-build/*
 .env
