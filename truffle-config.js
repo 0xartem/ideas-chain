@@ -53,6 +53,11 @@ module.exports = {
       network_id: "3",
       from: "0x4f2F12d5179d76B84af5df82344FDc0B5b7BAbEa",
       gas: 4600000,
+    },
+    sandbox: {
+      url: 'https://sandbox.truffleteams.com/a6f16115-7925-440c-9ad0-d9e01eb8752d',
+      network_id: "*",
+      gas: 550000
     }
     // Another network with more advanced options...
     // advanced: {
